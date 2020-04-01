@@ -161,11 +161,6 @@ class _MainPageState extends State<MainPage> {
                                     Container(
                                       color: Colors.yellow,
                                       child: ListTile(
-                                        leading: Icon(
-                                          MdiIcons.cloudSync,
-                                          color: textColor,
-                                          size: 48,
-                                        ),
                                         title: SmashUI.titleText(
                                             "Geopaparazzi Survey Server",
                                             color: textColor),
@@ -183,8 +178,8 @@ class _MainPageState extends State<MainPage> {
                                             bold: true,
                                             color: textColor,
                                           ),
-                                          onTap: () => launchUrl(
-                                              './gss/index.html'),
+                                          onTap: () =>
+                                              launchUrl('./gss/index.html'),
                                         ),
                                       ),
                                     ),
@@ -224,11 +219,6 @@ class _MainPageState extends State<MainPage> {
                                     Container(
                                       color: Colors.deepOrange,
                                       child: ListTile(
-                                        leading: Icon(
-                                          MdiIcons.shareVariant,
-                                          color: textColor,
-                                          size: 48,
-                                        ),
                                         title: SmashUI.titleText(
                                             "Share and care",
                                             color: textColor),
@@ -327,11 +317,11 @@ class _MainPageState extends State<MainPage> {
                     alignment: Alignment.center,
                     child: InkWell(
                       child: SmashUI.normalText(
-                        'Source code repository',
+                        'Source code',
                         color: textColor,
                       ),
-                      onTap: () => launchUrl(
-                          'https://github.com/moovida/smash'),
+                      onTap: () =>
+                          launchUrl('https://github.com/moovida/smash'),
                     ),
                   ),
                 ),
@@ -384,7 +374,7 @@ class _MainPageState extends State<MainPage> {
                     alignment: Alignment.center,
                     child: InkWell(
                       child: SmashUI.normalText(
-                        'Source code repository',
+                        'Source code',
                         color: textColor,
                       ),
                       onTap: () => launchUrl(
