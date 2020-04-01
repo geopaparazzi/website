@@ -36,7 +36,8 @@ class GeopaparazziWebsiteApp extends StatelessWidget {
       debugShowMaterialGrid: false,
       debugShowCheckedModeBanner: false,
       showPerformanceOverlay: false,
-      home: MainPage(title: 'Geopaparazzi, because not all paparazzis are evil!'),
+      home:
+          MainPage(title: 'Geopaparazzi, because not all paparazzis are evil!'),
     );
   }
 }
@@ -51,7 +52,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   List<String> assetImages = [
-    "assets/00.png",
+    "assets/geopaparazzi_icon.png",
     "assets/01.jpg",
     "assets/02.jpg",
     "assets/03.jpg",
@@ -102,28 +103,6 @@ class _MainPageState extends State<MainPage> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  CarouselSlider(
-                    enlargeCenterPage: true,
-                    aspectRatio: 2,
-                    viewportFraction: 0.8,
-                    initialPage: 0,
-                    enableInfiniteScroll: true,
-                    autoPlay: true,
-                    height: 500.0,
-                    items: assetImages.map((assetPath) {
-                      return Container(
-                        margin: EdgeInsets.all(5.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                          child: Image.asset(
-                            assetPath,
-                            fit: BoxFit.cover,
-                            width: 800.0,
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
                   Padding(
                     padding: SmashUI.defaultPadding(),
                     child: Row(
@@ -132,114 +111,31 @@ class _MainPageState extends State<MainPage> {
                         Expanded(
                           child: Padding(
                             padding: SmashUI.defaultPadding(),
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(SmashUI.DEFAULT_PADDING),
-                              ),
-                              elevation: 3,
-                              child: SizedBox(
-                                height: 200.0,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: <Widget>[
-                                    Container(
-                                      color: GeopaparazziColors.mainDecorations,
-                                      child: ListTile(
-                                        leading: Icon(
-                                          MdiIcons.bookInformationVariant,
-                                          size: 36,
-                                        ),
-                                        title: SmashUI.titleText("Documentation", color: textColor),
-                                        subtitle: SmashUI.normalText(
-                                          "Check out the user manual!",
-                                          color: textColor,
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: new InkWell(
-                                            child: SmashUI.titleText(
-                                              'Current version',
-                                              bold: true,
-                                              color: textColor,
-                                            ),
-                                            onTap: () => launchUrl('./v600/index.html')),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: InkWell(
-                                            child: SmashUI.normalText(
-                                              'Previous version 5.6.5',
-                                              color: textColor,
-                                            ),
-                                            onTap: () => launchUrl('./v565/index.html')),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                            child: Image.asset(
+                              "geopaparazzi_icon.png",
+                              height: 300,
                             ),
                           ),
                         ),
                         Expanded(
                           child: Padding(
                             padding: SmashUI.defaultPadding(),
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(SmashUI.DEFAULT_PADDING),
-                              ),
-                              elevation: 3,
-                              child: SizedBox(
-                                height: 200.0,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: <Widget>[
-                                    Container(
-                                      color: Colors.yellow,
-                                      child: ListTile(
-                                        leading: Icon(
-                                          MdiIcons.fileCode,
-                                          color: textColor,
-                                          size: 48,
-                                        ),
-                                        title: SmashUI.titleText("Get the source code", color: textColor),
-                                        subtitle: SmashUI.normalText("It's free and open source", color: textColor),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: InkWell(
-                                          child: SmashUI.normalText(
-                                            'Source code repository',
-                                            color: textColor,
-                                          ),
-                                          onTap: () => launchUrl('https://github.com/geopaparazzi/geopaparazzi'),
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: InkWell(
-                                          child: SmashUI.normalText(
-                                            'Related projects',
-                                            color: textColor,
-                                          ),
-                                          onTap: () => launchUrl('https://github.com/geopaparazzi'),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                            child: Image.asset(
+                              "smash_icon.png",
+                              height: 250,
                             ),
                           ),
                         ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: SmashUI.defaultPadding(),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        getGeopaparazzi(textColor),
+                        getSmash(textColor),
                       ],
                     ),
                   ),
@@ -253,7 +149,8 @@ class _MainPageState extends State<MainPage> {
                             padding: SmashUI.defaultPadding(),
                             child: Card(
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(SmashUI.DEFAULT_PADDING),
+                                borderRadius: BorderRadius.circular(
+                                    SmashUI.DEFAULT_PADDING),
                               ),
                               elevation: 3,
                               child: SizedBox(
@@ -262,31 +159,46 @@ class _MainPageState extends State<MainPage> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: <Widget>[
                                     Container(
-                                      color: SmashColors.mainDecorations,
+                                      color: Colors.yellow,
                                       child: ListTile(
                                         leading: Icon(
-                                          MdiIcons.apple,
+                                          MdiIcons.cloudSync,
                                           color: textColor,
                                           size: 48,
                                         ),
-                                        title: SmashUI.titleText("S.M.A.S.H.", color: textColor),
+                                        title: SmashUI.titleText(
+                                            "Geopaparazzi Survey Server",
+                                            color: textColor),
                                         subtitle: SmashUI.normalText(
-                                          "Need it on IOS? It is slowly coming...",
-                                          color: textColor,
+                                            "Sync your survey in the cloud.",
+                                            color: textColor),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: InkWell(
+                                          child: SmashUI.normalText(
+                                            'User manual',
+                                            bold: true,
+                                            color: textColor,
+                                          ),
+                                          onTap: () => launchUrl(
+                                              './gss/index.html'),
                                         ),
                                       ),
                                     ),
                                     Expanded(
                                       child: Align(
                                         alignment: Alignment.center,
-                                        child: new InkWell(
-                                            child: Image.asset(
-                                              "assets/smash_icon.png",
-                                              fit: BoxFit.cover,
-                                              width: 200.0,
-                                            ),
-                                            onTap: () => launchUrl(
-                                                'https://www.slideshare.net/moovida/geopaparazzi-state-of-the-art-of-the-digital-field-mapping-application-167930916')),
+                                        child: InkWell(
+                                          child: SmashUI.normalText(
+                                            'Related projects',
+                                            color: textColor,
+                                          ),
+                                          onTap: () => launchUrl(
+                                              'https://github.com/geopaparazzi'),
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -300,7 +212,8 @@ class _MainPageState extends State<MainPage> {
                             padding: SmashUI.defaultPadding(),
                             child: Card(
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(SmashUI.DEFAULT_PADDING),
+                                borderRadius: BorderRadius.circular(
+                                    SmashUI.DEFAULT_PADDING),
                               ),
                               elevation: 3,
                               child: SizedBox(
@@ -316,8 +229,12 @@ class _MainPageState extends State<MainPage> {
                                           color: textColor,
                                           size: 48,
                                         ),
-                                        title: SmashUI.titleText("Share and care", color: textColor),
-                                        subtitle: SmashUI.normalText("Find and share knowledge", color: textColor),
+                                        title: SmashUI.titleText(
+                                            "Share and care",
+                                            color: textColor),
+                                        subtitle: SmashUI.normalText(
+                                            "Find and share knowledge",
+                                            color: textColor),
                                       ),
                                     ),
                                     Expanded(
@@ -328,7 +245,8 @@ class _MainPageState extends State<MainPage> {
                                             'Mailinglist',
                                             color: textColor,
                                           ),
-                                          onTap: () => launchUrl('https://groups.google.com/forum/#!forum/geopaparazzi-users'),
+                                          onTap: () => launchUrl(
+                                              'https://groups.google.com/forum/#!forum/geopaparazzi-users'),
                                         ),
                                       ),
                                     ),
@@ -340,7 +258,8 @@ class _MainPageState extends State<MainPage> {
                                             'Facebook group',
                                             color: textColor,
                                           ),
-                                          onTap: () => launchUrl('https://www.facebook.com/groups/350587351732480/'),
+                                          onTap: () => launchUrl(
+                                              'https://www.facebook.com/groups/350587351732480/'),
                                         ),
                                       ),
                                     ),
@@ -364,6 +283,120 @@ class _MainPageState extends State<MainPage> {
 //        tooltip: 'Increment',
 //        child: Icon(Icons.add),
 //      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  Expanded getSmash(Color textColor) {
+    return Expanded(
+      child: Padding(
+        padding: SmashUI.defaultPadding(),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(SmashUI.DEFAULT_PADDING),
+          ),
+          elevation: 3,
+          child: SizedBox(
+            height: 200.0,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Container(
+                  color: SmashColors.mainDecorations,
+                  child: ListTile(
+                    title: SmashUI.titleText("SMASH", color: textColor),
+                    subtitle: SmashUI.normalText(
+                      "The digital field mapping app for IOS and Android.",
+                      color: textColor,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: new InkWell(
+                        child: SmashUI.titleText(
+                          'User manual',
+                          bold: true,
+                          color: textColor,
+                        ),
+                        onTap: () => launchUrl('./smash/index.html')),
+                  ),
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: InkWell(
+                      child: SmashUI.normalText(
+                        'Source code repository',
+                        color: textColor,
+                      ),
+                      onTap: () => launchUrl(
+                          'https://github.com/moovida/smash'),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Expanded getGeopaparazzi(Color textColor) {
+    return Expanded(
+      child: Padding(
+        padding: SmashUI.defaultPadding(),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(SmashUI.DEFAULT_PADDING),
+          ),
+          elevation: 3,
+          child: SizedBox(
+            height: 200.0,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Container(
+                  color: GeopaparazziColors.mainDecorations,
+                  child: ListTile(
+                    title: SmashUI.titleText("Geopaparazzi", color: textColor),
+                    subtitle: SmashUI.normalText(
+                      "Because not all paparazzis are evil!",
+                      color: textColor,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: new InkWell(
+                        child: SmashUI.titleText(
+                          'User manual',
+                          bold: true,
+                          color: textColor,
+                        ),
+                        onTap: () => launchUrl('./geopaparazzi/index.html')),
+                  ),
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: InkWell(
+                      child: SmashUI.normalText(
+                        'Source code repository',
+                        color: textColor,
+                      ),
+                      onTap: () => launchUrl(
+                          'https://github.com/geopaparazzi/geopaparazzi'),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 

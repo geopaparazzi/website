@@ -16,7 +16,7 @@ class SmashUI {
   static const double NORMAL_SIZE = 20;
   static const double BIG_SIZE = 26;
 
-  static const double DEFAULT_PADDING = 20.0;
+  static const double DEFAULT_PADDING = 5.0;
   static const double DEFAULT_ELEVATION = 5.0;
 
   static const double SMALL_ICON_SIZE = 24;
