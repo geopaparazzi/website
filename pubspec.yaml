@@ -20,26 +20,12 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.3
-
-  # MIT
-  carousel_slider: ^1.4.1
+#  cupertino_icons: ^0.1.3
 
   # MIT
   material_design_icons_flutter: 3.2.4495
 
   url_launcher: ^5.4.2
-
-#  # BSD
-#  flutter_map: ^0.7.3
-#
-#  # apache
-#  latlong: 0.6.1
-
-#dependency_overrides:
-#  cached_network_image: 2.0.0-rc.1
 
 dev_dependencies:
   flutter_test:
@@ -58,9 +44,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/geopaparazzi_icon.png
-    - assets/smash_icon.png
+  #  assets:
+  #    - assets/geopaparazzi_icon.png
+  #    - assets/smash_icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
