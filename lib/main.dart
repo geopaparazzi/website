@@ -161,7 +161,8 @@ class _MainPageState extends State<MainPage> {
           rowCells("Form Notes", "yes", "yes"),
           rowCells("Icon support for notes", "no", "yes"),
           rowCells("GPS Logs", "yes", "yes"),
-          rowCells("Background GPS Logging", "yes", "no"),
+          rowCells("Background GPS Logging", "yes", "yes"),
+          rowCells("GPS Diagnostic View", "no", "yes"),
           //
           headerCells("", "Supported Offline Formats", ""),
           rowCells("Geopackage Visualization", "yes", "yes"),
@@ -170,10 +171,14 @@ class _MainPageState extends State<MainPage> {
           rowCells("MBTiles", "yes", "yes"),
           rowCells("Mapsforge", "yes", "yes"),
           rowCells("GPX", "yes", "yes"),
+          rowCells("Rasters in tiff/png/jpg+wtf format", "no", "yes"),
+          rowCells("Shapefile Visualization", "no", "yes"),
+          rowCells("SLD Styling", "no", "yes"),
           //
           headerCells("", "Supported Online Formats", ""),
           rowCells("TMS Services", "yes", "yes"),
-          rowCells("WMS Services", "yes", "on TODO list"),
+          rowCells("WMS Services", "yes", "yes"),
+          rowCells("Service catalog and wizard for TMS/WMS", "no", "yes"),
           //
           headerCells("", "Cloud Synchronization", ""),
           rowCells("Synchronization with GSS", "yes", "yes"),
