@@ -9,6 +9,9 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 void main() => runApp(GeopaparazziWebsiteApp());
 
+const YES = "yes";
+const NO = "no";
+
 class GeopaparazziWebsiteApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -153,48 +156,49 @@ class _MainPageState extends State<MainPage> {
         },
         children: <TableRow>[
           headerCells("Geopaparazzi", "Operating System", "SMASH"),
-          rowCells("Android", "yes", "yes"),
-          rowCells("IOS", "no", "yes"),
+          rowCells("Android", YES, YES),
+          rowCells("IOS", NO, YES),
           //
           headerCells("", "Surveying Tools", ""),
-          rowCells("Text/Image Notes", "yes", "yes"),
-          rowCells("Form Notes", "yes", "yes"),
-          rowCells("Icon support for notes", "no", "yes"),
-          rowCells("GPS Logs", "yes", "yes"),
-          rowCells("Background GPS Logging", "yes", "yes"),
-          rowCells("GPS Diagnostic View", "no", "yes"),
+          rowCells("Text/Image Notes", YES, YES),
+          rowCells("Form Notes", YES, YES),
+          rowCells("Icon support for notes", NO, YES),
+          rowCells("GPS Logs", YES, YES),
+          rowCells("Background GPS Logging", YES, YES),
+          rowCells("GPS Diagnostic View", NO, YES),
           //
           headerCells("", "Supported Offline Formats", ""),
-          rowCells("Geopackage Visualization", "yes", "yes"),
-          rowCells("Geopackage Editing", "yes", "on TODO list"),
-          rowCells("Spatialite Visualization/Editing", "yes", "no"),
-          rowCells("MBTiles", "yes", "yes"),
-          rowCells("Mapsforge", "yes", "yes"),
-          rowCells("GPX", "yes", "yes"),
-          rowCells("Rasters in tiff/png/jpg+wtf format", "no", "yes"),
-          rowCells("Shapefile Visualization", "no", "yes"),
-          rowCells("SLD Styling", "no", "yes"),
+          rowCells("Geopackage Visualization", YES, YES),
+          rowCells("Geopackage Attributes Editing", YES, YES),
+          rowCells("Geopackage Geometry Editing", YES, "on TODO list"),
+          rowCells("Spatialite Visualization/Editing", YES, NO),
+          rowCells("MBTiles", YES, YES),
+          rowCells("Mapsforge", YES, YES),
+          rowCells("GPX", YES, YES),
+          rowCells("Rasters in tiff/png/jpg+wtf format", NO, YES),
+          rowCells("Shapefile Visualization", NO, YES),
+          rowCells("SLD Styling", NO, YES),
           //
           headerCells("", "Supported Online Formats", ""),
-          rowCells("TMS Services", "yes", "yes"),
-          rowCells("WMS Services", "yes", "yes"),
-          rowCells("Service catalog and wizard for TMS/WMS", "no", "yes"),
+          rowCells("TMS Services", YES, YES),
+          rowCells("WMS Services", YES, YES),
+          rowCells("Service catalog and wizard for TMS/WMS", NO, YES),
           //
           headerCells("", "Cloud Synchronization", ""),
-          rowCells("Synchronization with GSS", "yes", "yes"),
-          rowCells("Synchronization with Cookiecutter Geopaparazzi Server",
-              "yes", "no"),
+          rowCells("Synchronization with GSS", NO, YES),
+          rowCells(
+              "Synchronization with Cookiecutter Geopaparazzi Server", YES, NO),
           //
           headerCells("", "GIS Integration/Data preparation", ""),
-          rowCells("QGIS", "yes", "yes"),
-          rowCells("GvSIG", "yes", "yes"),
-          rowCells("Hortonmachine", "yes", "yes"),
+          rowCells("QGIS", YES, YES),
+          rowCells("GvSIG", YES, YES),
+          rowCells("Hortonmachine", YES, YES),
           //
           headerCells("", "Other Information", ""),
-          rowCells("Sqlite based, intercompatible projects", "yes", "yes"),
+          rowCells("Sqlite based, intercompatible projects", YES, YES),
           rowCells("Time of activity", "> 10 years", "< 1 year"),
-          rowCells("Custom CRS support", "no", "on TODO list"),
-          rowCells("3D support", "yes", "no"),
+          rowCells("Custom CRS support", NO, "on TODO list"),
+          rowCells("3D support", YES, NO),
         ],
       ),
     );
@@ -204,9 +208,14 @@ class _MainPageState extends State<MainPage> {
     const pad = 15.0;
     return TableRow(children: [
       TableCell(
-        child: Padding(
-          padding: const EdgeInsets.all(pad),
-          child: SmashUI.normalText(gp, textAlign: TextAlign.center),
+        child: Container(
+          color: gp == NO
+              ? Colors.red[100]
+              : gp == YES ? Colors.green[100] : Colors.orange[100],
+          child: Padding(
+            padding: const EdgeInsets.all(pad),
+            child: SmashUI.normalText(gp, textAlign: TextAlign.center),
+          ),
         ),
       ),
       TableCell(
@@ -217,9 +226,14 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
       TableCell(
-        child: Padding(
-          padding: const EdgeInsets.all(pad),
-          child: SmashUI.normalText(sm, textAlign: TextAlign.center),
+        child: Container(
+          color: sm == NO
+              ? Colors.red[100]
+              : sm == YES ? Colors.green[100] : Colors.orange[100],
+          child: Padding(
+            padding: const EdgeInsets.all(pad),
+            child: SmashUI.normalText(sm, textAlign: TextAlign.center),
+          ),
         ),
       ),
     ]);
