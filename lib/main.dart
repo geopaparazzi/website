@@ -165,6 +165,7 @@ class _MainPageState extends State<MainPage> {
           rowCells("Icon support for notes", NO, YES),
           rowCells("GPS Logs", YES, YES),
           rowCells("Background GPS Logging", YES, YES),
+          rowCells("Kalman filter on GPS option", NO, YES),
           rowCells("GPS Diagnostic View", NO, YES),
           //
           headerCells("", "Supported Offline Formats", ""),
