@@ -9,8 +9,9 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 void main() => runApp(GeopaparazziWebsiteApp());
 
-const YES = "yes";
-const NO = "no";
+const YES = "YES";
+const NO = "NO";
+const pad = 15.0;
 
 class GeopaparazziWebsiteApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -77,8 +78,8 @@ class _MainPageState extends State<MainPage> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Expanded(child: getGeopaparazzi(textColor)),
                         Expanded(child: getSmash(textColor)),
+                        Expanded(child: getGeopaparazzi(textColor)),
                       ],
                     ),
                   ),
@@ -114,11 +115,11 @@ class _MainPageState extends State<MainPage> {
               children: <Widget>[
                 Padding(
                   padding: SmashUI.defaultPadding(),
-                  child: getGeopaparazzi(textColor),
+                  child: getSmash(textColor),
                 ),
                 Padding(
                   padding: SmashUI.defaultPadding(),
-                  child: getSmash(textColor),
+                  child: getGeopaparazzi(textColor),
                 ),
                 Padding(
                   padding: SmashUI.defaultPadding(),
@@ -165,13 +166,16 @@ class _MainPageState extends State<MainPage> {
           rowCells("Icon support for notes", NO, YES),
           rowCells("GPS Logs", YES, YES),
           rowCells("Background GPS Logging", YES, YES),
+          rowCells("GPS log statistics", NO, YES),
+          rowCells("GPS log profile view", NO, YES),
           rowCells("Kalman filter on GPS option", NO, YES),
           rowCells("GPS Diagnostic View", NO, YES),
+          rowCells("Measuring tool", YES, "soon"),
           //
           headerCells("", "Supported Offline Formats", ""),
           rowCells("Geopackage Visualization", YES, YES),
           rowCells("Geopackage Attributes Editing", YES, YES),
-          rowCells("Geopackage Geometry Editing", YES, "on TODO list"),
+          rowCells("Geopackage Geometry Editing", NO, "soon"),
           rowCells("Spatialite Visualization/Editing", YES, NO),
           rowCells("MBTiles", YES, YES),
           rowCells("Mapsforge", YES, YES),
@@ -185,6 +189,12 @@ class _MainPageState extends State<MainPage> {
           rowCells("WMS Services", YES, YES),
           rowCells("Service catalog and wizard for TMS/WMS", NO, YES),
           //
+          headerCells("", "Supported Export Formats", ""),
+          rowCells("GPX", YES, "soon"),
+          rowCells("KML", YES, "soon"),
+          rowCells("PDF", YES, "soon"),
+          rowCells("Geopackage", NO, "soon"),
+          //
           headerCells("", "Cloud Synchronization", ""),
           rowCells("Synchronization with GSS", NO, YES),
           rowCells(
@@ -197,7 +207,7 @@ class _MainPageState extends State<MainPage> {
           //
           headerCells("", "Other Information", ""),
           rowCells("Sqlite based, intercompatible projects", YES, YES),
-          rowCells("Time of activity", "> 10 years", "< 1 year"),
+          rowCells("Time of activity", "> 10 years", "< 2 years"),
           rowCells("Custom CRS support", NO, "on TODO list"),
           rowCells("3D support", YES, NO),
         ],
@@ -206,16 +216,17 @@ class _MainPageState extends State<MainPage> {
   }
 
   static TableRow rowCells(String featureDescription, String gp, String sm) {
-    const pad = 15.0;
     return TableRow(children: [
       TableCell(
-        child: Container(
-          color: gp == NO
-              ? Colors.red[100]
-              : gp == YES ? Colors.green[100] : Colors.orange[100],
-          child: Padding(
-            padding: const EdgeInsets.all(pad),
-            child: SmashUI.normalText(gp, textAlign: TextAlign.center),
+        child: Padding(
+          padding: const EdgeInsets.all(pad),
+          child: SmashUI.normalText(
+            gp,
+            textAlign: TextAlign.center,
+            color: gp == NO
+                ? Colors.red
+                : gp == YES ? Colors.green : Colors.orange,
+            bold: true,
           ),
         ),
       ),
@@ -227,13 +238,15 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
       TableCell(
-        child: Container(
-          color: sm == NO
-              ? Colors.red[100]
-              : sm == YES ? Colors.green[100] : Colors.orange[100],
-          child: Padding(
-            padding: const EdgeInsets.all(pad),
-            child: SmashUI.normalText(sm, textAlign: TextAlign.center),
+        child: Padding(
+          padding: const EdgeInsets.all(pad),
+          child: SmashUI.normalText(
+            sm,
+            textAlign: TextAlign.center,
+            color: sm == NO
+                ? Colors.red
+                : sm == YES ? Colors.green : Colors.orange,
+            bold: true,
           ),
         ),
       ),
@@ -242,36 +255,29 @@ class _MainPageState extends State<MainPage> {
 
   static TableRow headerCells(String a, String b, String c) {
     const pad = 15.0;
-    return TableRow(children: [
-      TableCell(
-        child: Container(
-          color: Colors.grey[350],
-          child: Padding(
-            padding: const EdgeInsets.all(pad),
-            child: SmashUI.normalText(a, textAlign: TextAlign.center),
+    return TableRow(
+        decoration: BoxDecoration(color: Colors.grey[350]),
+        children: [
+          TableCell(
+            child: Padding(
+              padding: const EdgeInsets.all(pad),
+              child: SmashUI.normalText(a, textAlign: TextAlign.center),
+            ),
           ),
-        ),
-      ),
-      TableCell(
-        child: Container(
-          color: Colors.grey[350],
-          child: Padding(
-            padding: const EdgeInsets.all(pad),
-            child:
-                SmashUI.normalText(b, bold: true, textAlign: TextAlign.center),
+          TableCell(
+            child: Padding(
+              padding: const EdgeInsets.all(pad),
+              child: SmashUI.normalText(b,
+                  bold: true, textAlign: TextAlign.center),
+            ),
           ),
-        ),
-      ),
-      TableCell(
-        child: Container(
-          color: Colors.grey[350],
-          child: Padding(
-            padding: const EdgeInsets.all(pad),
-            child: SmashUI.normalText(c, textAlign: TextAlign.center),
+          TableCell(
+            child: Padding(
+              padding: const EdgeInsets.all(pad),
+              child: SmashUI.normalText(c, textAlign: TextAlign.center),
+            ),
           ),
-        ),
-      ),
-    ]);
+        ]);
   }
 
   Widget getSocial(Color textColor) {
